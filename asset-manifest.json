@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "/netflix-clone/static/css/main.c1dfc970.css",
-    "main.js": "/netflix-clone/static/js/main.1a5ca450.js",
-    "index.html": "/netflix-clone/index.html",
-    "main.c1dfc970.css.map": "/netflix-clone/static/css/main.c1dfc970.css.map",
-    "main.1a5ca450.js.map": "/netflix-clone/static/js/main.1a5ca450.js.map"
+    "main.css": "/movie-club-app/static/css/main.c1dfc970.css",
+    "main.js": "/movie-club-app/static/js/main.1a5ca450.js",
+    "index.html": "/movie-club-app/index.html",
+    "main.c1dfc970.css.map": "/movie-club-app/static/css/main.c1dfc970.css.map",
+    "main.1a5ca450.js.map": "/movie-club-app/static/js/main.1a5ca450.js.map"
   },
   "entrypoints": [
     "static/css/main.c1dfc970.css",
