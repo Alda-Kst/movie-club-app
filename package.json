@@ -1,7 +1,7 @@
 {
-  "name": "netflix-clone",
+  "name": "movie-club-app",
   "version": "0.1.0",
-  "homepage": "https://Alda-Kst.github.io/movie-club-app",
+  "homepage": ".",
   "private": true,
   "dependencies": {
     "@testing-library/dom": "^10.4.0",
