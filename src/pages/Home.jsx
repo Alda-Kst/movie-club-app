@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import MovieCard from '../components/MovieCard';
 import useDebounce from '../hooks/useDebounce'; 
-import { fetchMoviesData } from '../api/tmdb';
+import '../components/Skeleton.css';
 
 function Home() {
   const [movies, setMovies] = useState([]);
@@ -10,20 +11,24 @@ function Home() {
 
   const debouncedQuery = useDebounce(query, 500); 
 
-  useEffect(() => {
-    const getMovies = async () => {
-      setLoading(true);
-      try {
-        const results = await fetchMoviesData(debouncedQuery);
-        setMovies(results);
-      } catch (err) {
-        console.error("Error loading movies in component:", err);
-      } finally {
-        setLoading(false);
-      }
-    };
+  const fetchMovies = async () => {
+    setLoading(true);
+    const url = debouncedQuery
+      ? `https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_TMDB_API_KEY}&query=${debouncedQuery}`
+      : `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.REACT_APP_TMDB_API_KEY}`;
+    try {
+      const res = await axios.get(url);
+      setMovies(res.data.results);
+    } catch (err){
+      console.error("Error fetching movies:", err);
+    } finally {
+      setLoading(false);
+    }
+  };
 
-    getMovies();
+  useEffect(() => {
+    fetchMovies();
+    // eslint-disable-next-line
   }, [debouncedQuery]);
 
   const handleInputChange = (e) => {
@@ -52,7 +57,14 @@ function Home() {
       
       <div className="movies-container">
         {loading ? (
-          <div className="spinner"></div>
+          <div className="movies-grid">
+            {[1, 2, 3, 4, 5, 6].map((n) => (
+              <div key={n} className="skeleton-card">
+                <div className="skeleton-poster"></div>
+                <div className="skeleton-title"></div>
+              </div>
+            ))}
+          </div>
         ) : movies.length > 0 ? (
           movies.map((movie) => <MovieCard key={movie.id} movie={movie} />)
         ) : (

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import axios from 'axios';
+import { fetchMovieDetails } from '../api/tmdb';
 import './MovieDetail.css';
 
 function MovieDetail() {
@@ -8,13 +8,15 @@ function MovieDetail() {
   const [movie, setMovie] = useState(null);
 
   useEffect(() => {
-    const fetchMovie = async () => {
-      const res = await axios.get(
-        `https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.REACT_APP_TMDB_API_KEY}`
-      );
-      setMovie(res.data);
+    const getMovie = async () => {
+      try {
+        const data = await fetchMovieDetails(id);
+        setMovie(data);
+      } catch (error) {
+        console.error("Failed to load movie details", error);
+      }
     };
-    fetchMovie();
+    getMovie();
   }, [id]);
 
   if (!movie) return <div>Loading...</div>;
