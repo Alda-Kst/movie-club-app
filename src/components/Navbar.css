@@ -1,0 +1,10 @@
+.navbar {
+  background-color: #141414;
+  padding: 1rem;
+}
+
+.nav-logo {
+  color: red;
+  font-size: 1.5rem;
+  text-decoration: none;
+}
