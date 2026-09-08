@@ -8,6 +8,12 @@ function Home() {
   const [movies, setMovies] = useState([]);
   const [query, setQuery] = useState('');
   const [loading, setLoading] = useState(false);
+  
+  
+  const [favorites, setFavorites] = useState(() => {
+    const savedFavorites = localStorage.getItem('movieclub_favorites');
+    return savedFavorites ? JSON.parse(savedFavorites) : [];
+  });
 
   const debouncedQuery = useDebounce(query, 500); 
 
@@ -30,6 +36,23 @@ function Home() {
     fetchMovies();
     // eslint-disable-next-line
   }, [debouncedQuery]);
+
+  
+  useEffect(() => {
+    localStorage.setItem('movieclub_favorites', JSON.stringify(favorites));
+  }, [favorites]);
+
+  
+  const handleToggleFavorite = (movie) => {
+    setFavorites((prevFavorites) => {
+      const exists = prevFavorites.some((fav) => fav.id === movie.id);
+      if (exists) {
+        return prevFavorites.filter((fav) => fav.id !== movie.id);
+      } else {
+        return [...prevFavorites, movie];
+      }
+    });
+  };
 
   const handleInputChange = (e) => {
     setQuery(e.target.value);
@@ -66,7 +89,17 @@ function Home() {
             ))}
           </div>
         ) : movies.length > 0 ? (
-          movies.map((movie) => <MovieCard key={movie.id} movie={movie} />)
+          movies.map((movie) => {
+            const isFavorite = favorites.some((fav) => fav.id === movie.id);
+            return (
+              <MovieCard 
+                key={movie.id} 
+                movie={movie} 
+                onToggleFavorite={handleToggleFavorite}
+                isFavorite={isFavorite}
+              />
+            );
+          })
         ) : (
           <p style={{ color: 'gray', fontStyle: 'italic' }}>No movies found.</p>
         )}
