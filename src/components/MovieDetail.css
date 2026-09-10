@@ -1,0 +1,55 @@
+.movie-detail {
+    padding: 2rem;
+    color: #fff;
+    background-color: #111; 
+    min-height: 100vh;
+  }
+  
+  .back-button {
+    display: inline-block;
+    margin-bottom: 1.5rem;
+    color: #61dafb;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+  }
+  
+  .back-button:hover {
+    color: #90e0ef;
+  }
+  
+  .movie-detail-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+  
+  .movie-poster {
+    width: 100%;
+    max-width: 350px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  }
+  
+  .movie-info {
+    flex: 1;
+  }
+  
+  .movie-info h1 {
+    margin-bottom: 0.75rem;
+    font-size: 2rem;
+  }
+  
+  .movie-info p {
+    margin: 0.5rem 0;
+    line-height: 1.5;
+  }
+  
+  /* Responsive layout: switch to row on wider screens */
+  @media (min-width: 768px) {
+    .movie-detail-content {
+      flex-direction: row;
+      align-items: flex-start;
+    }
+  }
+  
