@@ -6,17 +6,26 @@
   }
   
   .back-button {
-    display: inline-block;
-    margin-bottom: 1.5rem;
-    color: #f3f5f5;
-    text-decoration: none;
-    font-weight: bold;
-    transition: color 0.3s ease;
-  }
-  
-  .back-button:hover {
-    color: #ed1b76;
-  }
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-bottom: 20px;
+  transition: all 0.2s ease-in-out;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.back-button:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  transform: translateX(-3px); 
+  border-color: rgba(255, 255, 255, 0.3);
+}
   
   .movie-detail-content {
     display: flex;

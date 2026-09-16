@@ -22,23 +22,33 @@
 .nav-link {
   color: #fff;
   text-decoration: none;
-  font-size: 1rem;
-  transition: color 0.2s;
+  font-size: 0.95rem;
+  padding: 6px 14px;
+  border-radius: 20px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.2s ease-in-out;
 }
 
 .nav-link:hover {
-  color: red;
+  background-color: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.2);
+  color: #fff;
 }
-
 .watchlist-btn {
-  background-color: red;
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
-  font-weight: bold;
+  background-color: #e50914; 
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-weight: 500;
+  font-size: 0.95rem;
   color: #fff !important;
-  transition: opacity 0.2s;
+  transition: all 0.2s ease-in-out;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(229, 9, 20, 0.3);
 }
 
 .watchlist-btn:hover {
-  opacity: 0.85;
+  background-color: #f40612;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 15px rgba(229, 9, 20, 0.4);
 }
