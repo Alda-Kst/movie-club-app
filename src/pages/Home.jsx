@@ -2,13 +2,13 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import MovieCard from '../components/MovieCard';
 import useDebounce from '../hooks/useDebounce'; 
+import Skeleton from '../components/Skeleton';
 import '../components/Skeleton.css';
 
 function Home() {
   const [movies, setMovies] = useState([]);
   const [query, setQuery] = useState('');
   const [loading, setLoading] = useState(false);
-  
   
   const [favorites, setFavorites] = useState(() => {
     const savedFavorites = localStorage.getItem('movieclub_favorites');
@@ -37,12 +37,10 @@ function Home() {
     // eslint-disable-next-line
   }, [debouncedQuery]);
 
-  
   useEffect(() => {
     localStorage.setItem('movieclub_favorites', JSON.stringify(favorites));
   }, [favorites]);
 
-  
   const handleToggleFavorite = (movie) => {
     setFavorites((prevFavorites) => {
       const exists = prevFavorites.some((fav) => fav.id === movie.id);
@@ -82,10 +80,7 @@ function Home() {
         {loading ? (
           <div className="movies-grid">
             {[1, 2, 3, 4, 5, 6].map((n) => (
-              <div key={n} className="skeleton-card">
-                <div className="skeleton-poster"></div>
-                <div className="skeleton-title"></div>
-              </div>
+              <Skeleton key={n} />
             ))}
           </div>
         ) : movies.length > 0 ? (
