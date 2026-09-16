@@ -20,8 +20,8 @@ function Home() {
   const fetchMovies = async () => {
     setLoading(true);
     const url = debouncedQuery
-      ? `https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_TMDB_API_KEY}&query=${debouncedQuery}`
-      : `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.REACT_APP_TMDB_API_KEY}`;
+      ? `https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_TMDB_API_KEY}&query=${debouncedQuery}&language=el-GR`
+      : `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=el-GR`;
     try {
       const res = await axios.get(url);
       setMovies(res.data.results);
