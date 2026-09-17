@@ -4,7 +4,7 @@ A sophisticated movie discovery application built with **React**, featuring real
 
 ## 🚀 Live Demo
 
-🔗 [Visit the Movie Club App](https://movie-club-app-34kg.vercel.app)
+🔗 [Visit the Movie Club App](https://movie-club-app-86yt.vercel.app/)
 
 ## ✨ Features
 
